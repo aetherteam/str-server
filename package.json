@@ -1,0 +1,33 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend for WaS",
+  "main": "main.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "keywords": [
+    "Backend"
+  ],
+  "author": "VaryshSi",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "fastify": "^3.20.1",
+    "fastify-cors": "^6.0.2",
+    "fastify-formbody": "^5.1.0",
+    "fastify-multipart": "^4.0.7",
+    "file-type": "^16.5.3",
+    "jimp": "^0.16.1",
+    "mongodb": "^4.1.2",
+    "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.15",
+    "pbkdf2": "^3.1.2",
+    "qs": "^6.10.1",
+    "redis": "^3.1.2"
+  }
+}
