@@ -19,21 +19,14 @@ module.exports = {
         const client = new MongoClient(config.mongoConnectionString);
         await client.connect();
         console.log("[MongoDB] connection established");
-        global.db = client.db("was").collection(coll);
+        global.db = client.db("was");
     },
     cacheIndexes: async function (coll) {
-        const db = global.mongo;
-
-        let booksLastIndex = await db.collection('books').findOne({}, { sort: ["id", "desc"] });
-        let usersLastIndex = await db.collection('users').findOne({}, { sort: ["id", "desc"] });
-        let chaptersLastIndex = await db.collection('chapters').findOne({}, { sort: ["id", "desc"] });
-        let commentsLastIndex = await db.collection('comments').findOne({}, { sort: ["id", "desc"] });
+        const db = global.db;
+        let usersLastIndex = await db.findOne({}, { sort: ["id", "desc"] });
 
         global.cachedIndexes = {
             'users': usersLastIndex ? usersLastIndex.id : 10000001,
-            'books': booksLastIndex ? booksLastIndex.id : 10000001,
-            'chapters': chaptersLastIndex ? chaptersLastIndex.id : 10000001,
-            'comments': commentsLastIndex ? commentsLastIndex.id : 10000001,
         }
         console.log("Cached Indexes:",global.cachedIndexes)
         console.log("[MongoDB] Indexes cached");
