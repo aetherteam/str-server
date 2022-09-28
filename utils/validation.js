@@ -2,14 +2,13 @@ const mongo = require("./mongodb");
 
 module.exports = {
     email: function (email) {
-        const re =
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (re.test(String(email).toLowerCase())) {
-            console.log("[Validation] email is correct");
+        const re = /^[a-zA-z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/;
+        if (re.test(email)) { 
+            console.log("[Validation] email is correct: " + email);
             return true;
         }
 
-        console.log("[Validation] email is incorrect");
+        console.log("[Validation] email is incorrect: " + email);
         return false;
     },
     basic: function (value) {
@@ -27,7 +26,7 @@ module.exports = {
         return false;
     },
     passwords: function (password, passwordConfirmation) {
-        if (password.length > 6 && password === passwordConfirmation) {
+        if (password.length >= 6 && password === passwordConfirmation) {
             console.log("[Validation] passwords are match");
             return true;
         }

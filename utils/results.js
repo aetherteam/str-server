@@ -1,14 +1,13 @@
 module.exports = {
-  error: function (text, code) {
-    console.error(text);
+  error: function (data, code) {
+    console.error(data);
     return {
       code,
-      error: text,
+      error: data,
       success: false
     };
   },
   unexpectedError: function () {
-    console.error(text);
     return {
       code: 500,
       error: "Unexpected error",

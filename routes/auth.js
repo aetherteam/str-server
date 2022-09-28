@@ -1,7 +1,7 @@
 const auth = require("../classes/auth.js");
 
 async function routes(fastify, options) {
-    fastify.post("/auth/registration", async (request, reply) => {
+    fastify.post("/auth/registration/", async (request, reply) => {
         const rp = request.body;
 
         const result = await auth.registration(
@@ -19,7 +19,7 @@ async function routes(fastify, options) {
             reply.code(result.code).send(result);
         }
     });
-    fastify.get("/auth/login", async (request, reply) => {
+    fastify.get("/auth/login/", async (request, reply) => {
         const rp = request.query;
         const result = await auth.login(rp.login, rp.password);
 

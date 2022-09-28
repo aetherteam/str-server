@@ -1,7 +1,7 @@
 const upload = require("../classes/imageUpload");
 
 async function routes(fastify, options) {
-    fastify.post("/upload", async function (request, reply) {
+    fastify.post("/upload/", async function (request, reply) {
         const result = await upload(request, reply);
         
         if (result.success) {
